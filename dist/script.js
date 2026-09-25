@@ -4296,8 +4296,8 @@
         /* @__PURE__ */ jsx("div", { className: "fundo-ruido absolute inset-0" }),
         /* @__PURE__ */ jsx("div", { className: "absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent to-ink-900" })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "container-site w-full pb-28 pt-24 sm:pt-28 lg:pb-24", children: /* @__PURE__ */ jsxs("div", { className: "grid items-center gap-10 lg:grid-cols-12", children: [
-        /* @__PURE__ */ jsxs("div", { className: "order-2 text-center lg:order-1 lg:col-span-5 lg:text-left", children: [
+      /* @__PURE__ */ jsx("div", { className: "container-site w-full pb-28 pt-24 sm:pt-28 lg:pb-24", children: /* @__PURE__ */ jsxs("div", { className: "hero-layout", children: [
+        /* @__PURE__ */ jsxs("div", { className: "hero-heading text-center lg:text-left", children: [
           /* @__PURE__ */ jsxs(
             "p",
             {
@@ -4329,6 +4329,8 @@
               }
             )
           ] }),
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "hero-description text-center lg:text-left", children: [
           /* @__PURE__ */ jsx(
             "p",
             {
@@ -4376,7 +4378,7 @@
             }
           )
         ] }),
-        /* @__PURE__ */ jsx("div", { className: "order-1 lg:order-2 lg:col-span-7", children: /* @__PURE__ */ jsxs("div", { className: "hero-in relative isolate mx-auto w-full max-w-3xl", style: { animationDelay: "0.15s" }, children: [
+        /* @__PURE__ */ jsx("div", { className: "hero-photo", children: /* @__PURE__ */ jsxs("div", { className: "hero-in relative isolate mx-auto w-full max-w-3xl", style: { animationDelay: "0.15s" }, children: [
           fotoCarregada && /* @__PURE__ */ jsx(
             "img",
             {

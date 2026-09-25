@@ -4860,3 +4860,14 @@
 .show-map iframe { display:block; width:100%; height:260px; border:0; border-radius:1rem; margin-top:1rem; }
 
 .agenda-status{color:var(--muted,#b6b6c9);font-size:.85rem;margin-bottom:1rem}
+
+.hero-layout { display:grid; grid-template-areas:"heading" "photo" "description"; grid-template-columns:minmax(0,1fr); }
+.hero-heading { grid-area:heading; }
+.hero-photo { grid-area:photo; min-width:0; margin-top:2.5rem; }
+.hero-description { grid-area:description; min-width:0; }
+@media (min-width:64rem) {
+ .hero-layout { grid-template-areas:"heading photo" "description photo"; grid-template-columns:minmax(0,5fr) minmax(0,7fr); column-gap:2.5rem; }
+ .hero-heading { align-self:end; }
+ .hero-description { align-self:start; }
+ .hero-photo { align-self:center; margin-top:0; }
+}
