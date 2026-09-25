@@ -1,0 +1,5 @@
+Ícones WhatsApp, Instagram, YouTube e Gmail: Simple Icons, versão principal 16.
+Fonte: https://github.com/simple-icons/simple-icons
+Download: https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/[nome].svg
+Licença dos ícones: CC0-1.0. As marcas pertencem aos respectivos titulares.
+Foi acrescentado fill="white" para exibição no fundo escuro do site.
