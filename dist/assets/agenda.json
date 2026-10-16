@@ -1,77 +1,65 @@
 {
-  "atualizadoEm": "2026-09-24T20:50:15.992Z",
+  "atualizadoEm": "2026-10-16T00:29:43.840Z",
   "eventos": [
     {
-      "id": "1qacmg2iebhkevu0c3nfvpo0l2@google.com:2026-10-03T03:00:00.000Z",
-      "data": "2026-10-03",
-      "dataFim": "",
-      "evento": "BUTIKIM (SÃO MANUEL)",
-      "horario": "",
-      "local": "",
-      "cidade": "",
-      "endereco": "",
-      "linkMapa": "",
-      "mapaEmbed": ""
-    },
-    {
-      "id": "0ujinnsfb0l0dqq9flafqqlu9d@google.com:2026-10-10T03:00:00.000Z",
-      "data": "2026-10-10",
-      "dataFim": "",
-      "evento": "CLUBE RECREATIVO (SÃO MANUEL)",
-      "horario": "",
-      "local": "",
-      "cidade": "",
-      "endereco": "",
-      "linkMapa": "",
-      "mapaEmbed": ""
-    },
-    {
-      "id": "55b2822nnovl55mk3cpt4v7agv@google.com:2026-10-17T03:00:00.000Z",
+      "id": "55b2822nnovl55mk3cpt4v7agv@google.com:2026-10-17T22:00:00.000Z",
       "data": "2026-10-17",
       "dataFim": "",
-      "evento": "MOTO ROMARIA (BOTUCATU)",
-      "horario": "",
-      "local": "",
+      "evento": "MOTO ROMARIA",
+      "horario": "19:00",
+      "local": "Ginásio Municipal Governador Mário Covas, Rua: Maria Joana Félix Diniz, 1585 - Jardim Ipyranga, Botucatu - SP, 18601-010, Brasil",
       "cidade": "",
-      "endereco": "",
-      "linkMapa": "",
-      "mapaEmbed": ""
+      "endereco": "Ginásio Municipal Governador Mário Covas, Rua: Maria Joana Félix Diniz, 1585 - Jardim Ipyranga, Botucatu - SP, 18601-010, Brasil",
+      "linkMapa": "https://www.google.com/maps/search/?api=1&query=Gin%C3%A1sio%20Municipal%20Governador%20M%C3%A1rio%20Covas%2C%20Rua%3A%20Maria%20Joana%20F%C3%A9lix%20Diniz%2C%201585%20-%20Jardim%20Ipyranga%2C%20Botucatu%20-%20SP%2C%2018601-010%2C%20Brasil",
+      "mapaEmbed": "https://www.google.com/maps?q=Gin%C3%A1sio%20Municipal%20Governador%20M%C3%A1rio%20Covas%2C%20Rua%3A%20Maria%20Joana%20F%C3%A9lix%20Diniz%2C%201585%20-%20Jardim%20Ipyranga%2C%20Botucatu%20-%20SP%2C%2018601-010%2C%20Brasil&output=embed"
     },
     {
-      "id": "6b9qm1lng04rsq4ml4b2lsvkqd@google.com:2026-10-31T03:00:00.000Z",
+      "id": "6b9qm1lng04rsq4ml4b2lsvkqd@google.com:2026-11-01T00:00:00.000Z",
       "data": "2026-10-31",
       "dataFim": "",
       "evento": "CLUBE DE CAMPO E NÁUTICA AGUA NOVA",
-      "horario": "",
-      "local": "",
+      "horario": "21:00",
+      "local": "Clube De Campo e Náutica Água Nova, 9HX7+R9 perto de - São Manuel, SP, 18650-000, Brasil",
       "cidade": "",
-      "endereco": "",
-      "linkMapa": "",
-      "mapaEmbed": ""
+      "endereco": "Clube De Campo e Náutica Água Nova, 9HX7+R9 perto de - São Manuel, SP, 18650-000, Brasil",
+      "linkMapa": "https://www.google.com/maps/search/?api=1&query=Clube%20De%20Campo%20e%20N%C3%A1utica%20%C3%81gua%20Nova%2C%209HX7%2BR9%20perto%20de%20-%20S%C3%A3o%20Manuel%2C%20SP%2C%2018650-000%2C%20Brasil",
+      "mapaEmbed": "https://www.google.com/maps?q=Clube%20De%20Campo%20e%20N%C3%A1utica%20%C3%81gua%20Nova%2C%209HX7%2BR9%20perto%20de%20-%20S%C3%A3o%20Manuel%2C%20SP%2C%2018650-000%2C%20Brasil&output=embed"
     },
     {
-      "id": "6g9co3p0stkpg14qquc06js13t@google.com:2026-11-28T03:00:00.000Z",
-      "data": "2026-11-28",
+      "id": "coqjcchgc4r66bb2cdj3cb9kcgo68bb1c5h66bb371j36c9i6orjid9l64@google.com:2026-11-14T22:00:00.000Z",
+      "data": "2026-11-14",
       "dataFim": "",
-      "evento": "PARTICULAR (BARRA BONITA)",
-      "horario": "",
-      "local": "",
+      "evento": "ROCK'N BEER",
+      "horario": "19:00",
+      "local": "Rock'n Beer • Bar • Lanchonete, Av. Rosa Zanela Petri - Vila Nova, Barra Bonita - SP, 17340-000, Brasil",
       "cidade": "",
-      "endereco": "",
-      "linkMapa": "",
-      "mapaEmbed": ""
+      "endereco": "Rock'n Beer • Bar • Lanchonete, Av. Rosa Zanela Petri - Vila Nova, Barra Bonita - SP, 17340-000, Brasil",
+      "linkMapa": "https://www.google.com/maps/search/?api=1&query=Rock'n%20Beer%20%E2%80%A2%20Bar%20%E2%80%A2%20Lanchonete%2C%20Av.%20Rosa%20Zanela%20Petri%20-%20Vila%20Nova%2C%20Barra%20Bonita%20-%20SP%2C%2017340-000%2C%20Brasil",
+      "mapaEmbed": "https://www.google.com/maps?q=Rock'n%20Beer%20%E2%80%A2%20Bar%20%E2%80%A2%20Lanchonete%2C%20Av.%20Rosa%20Zanela%20Petri%20-%20Vila%20Nova%2C%20Barra%20Bonita%20-%20SP%2C%2017340-000%2C%20Brasil&output=embed"
     },
     {
-      "id": "528vfal0tpnh86l23k5ar4qahj@google.com:2027-02-13T03:00:00.000Z",
+      "id": "cos3ge1h71i34b9lcgs6cb9k6cs30bb171i3cb9m65j38e1oc5i3gohh6k@google.com:2026-12-26T22:00:00.000Z",
+      "data": "2026-12-26",
+      "dataFim": "",
+      "evento": "ROCK'N BEER",
+      "horario": "19:00",
+      "local": "Rock'n Beer • Bar • Lanchonete, Av. Rosa Zanela Petri - Vila Nova, Barra Bonita - SP, 17340-000, Brasil",
+      "cidade": "",
+      "endereco": "Rock'n Beer • Bar • Lanchonete, Av. Rosa Zanela Petri - Vila Nova, Barra Bonita - SP, 17340-000, Brasil",
+      "linkMapa": "https://www.google.com/maps/search/?api=1&query=Rock'n%20Beer%20%E2%80%A2%20Bar%20%E2%80%A2%20Lanchonete%2C%20Av.%20Rosa%20Zanela%20Petri%20-%20Vila%20Nova%2C%20Barra%20Bonita%20-%20SP%2C%2017340-000%2C%20Brasil",
+      "mapaEmbed": "https://www.google.com/maps?q=Rock'n%20Beer%20%E2%80%A2%20Bar%20%E2%80%A2%20Lanchonete%2C%20Av.%20Rosa%20Zanela%20Petri%20-%20Vila%20Nova%2C%20Barra%20Bonita%20-%20SP%2C%2017340-000%2C%20Brasil&output=embed"
+    },
+    {
+      "id": "528vfal0tpnh86l23k5ar4qahj@google.com:2027-02-13T00:00:00.000Z",
       "data": "2027-02-13",
       "dataFim": "",
-      "evento": "PARTICULAR (BARRA BONITA)",
+      "evento": "PARTICULAR",
       "horario": "",
-      "local": "",
+      "local": "Barra Bonita, SP, 17340-000, Brasil",
       "cidade": "",
-      "endereco": "",
-      "linkMapa": "",
-      "mapaEmbed": ""
+      "endereco": "Barra Bonita, SP, 17340-000, Brasil",
+      "linkMapa": "https://www.google.com/maps/search/?api=1&query=Barra%20Bonita%2C%20SP%2C%2017340-000%2C%20Brasil",
+      "mapaEmbed": "https://www.google.com/maps?q=Barra%20Bonita%2C%20SP%2C%2017340-000%2C%20Brasil&output=embed"
     }
   ]
 }

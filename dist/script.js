@@ -4687,7 +4687,10 @@
         controller = request;
         const timeout = setTimeout(() => request.abort(), 15000);
         try {
-          const response = await fetch('assets/agenda.json', {cache:'no-store', signal:request.signal});
+          const agendaUrl = window.location.protocol === 'file:'
+            ? 'https://lucaspagnota.github.io/banda_3_em_1/assets/agenda.json'
+            : 'assets/agenda.json';
+          const response = await fetch(agendaUrl, {cache:'no-store', signal:request.signal});
           if (!response.ok) throw Error('Agenda indisponível');
           const dados = await response.json();
           if (!Array.isArray(dados.eventos) || !dados.eventos.every(s => typeof s.evento === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s.data))) throw Error('Agenda inválida');
