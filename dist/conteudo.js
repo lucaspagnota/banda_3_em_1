@@ -192,11 +192,6 @@ window.BANDA = {
       "proporcao": "2564/3840",
       "legenda": "Banda 3 em 1 — RENAN 2"
     },
-    {
-      "arquivo": "assets/mil-seguidores.png",
-      "proporcao": "1254/1254",
-      "legenda": "Banda 3 em 1 — mil-seguidores"
-    }
   ],
   "videos": [
     {
@@ -245,7 +240,6 @@ window.BANDA = {
     "assets/LUCAS.png": "1080/1350",
     "assets/BANDA 1.jpg": "3840/2564",
     "assets/LUCAS 1.jpg": "2564/3840",
-    "assets/mil-seguidores.png": "1254/1254",
     "assets/LEANDRO.jpg": "2564/3840"
   },
   "fotosSobre": [
