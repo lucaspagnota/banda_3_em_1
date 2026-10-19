@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main, master]
-    paths: ['dist/**', '.github/**']
+    paths: ['dist/**', 'site-v2/**', '.github/**']
   schedule:
     - cron: '7,22,37,52 * * * *'
 
@@ -33,6 +33,13 @@ jobs:
       - run: node --test .github/scripts/sync-agenda.test.cjs
       - name: Ler agenda pública do Google
         run: node .github/scripts/sync-agenda.cjs
+      # Versão de teste em /v2: usa a mesma agenda e não aparece no Google.
+      - name: Incluir a versão de teste em /v2
+        run: |
+          rm -rf dist/v2
+          cp -r site-v2 dist/v2
+          cp dist/assets/agenda.json dist/v2/assets/agenda.json
+          sed -i 's/content="index, follow"/content="noindex, nofollow"/' dist/v2/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

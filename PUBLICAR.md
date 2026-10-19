@@ -20,6 +20,14 @@ Edite a agenda SHOWS no Google. Título, data, horário e campo Local são usado
 
 O identificador da agenda está em `dist/conteudo.js`, no campo `agendaGoogle`. A lista `agenda` desse arquivo é apenas uma reserva caso os dados publicados não possam ser carregados.
 
+## Versão de teste (v2)
+
+A pasta `site-v2` tem a nova versão do site (animações e interações inspiradas em landonorris.com). Ela usa a sua própria cópia de `conteudo.js` e das fotos, e não altera nada em `dist`.
+
+Na publicação, a rotina copia `site-v2` para o endereço `/v2` do site (por exemplo `https://lucaspagnota.github.io/banda_3_em_1/v2/`), com a mesma agenda atualizada do site principal e marcada para não aparecer no Google. A página principal continua sendo a de `dist`.
+
+Para testar no computador, abra `site-v2/index.html` no navegador.
+
 ## Verificar localmente
 
 Requer Node.js 22 ou superior:
