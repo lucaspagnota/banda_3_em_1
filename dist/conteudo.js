@@ -191,7 +191,7 @@ window.BANDA = {
       "arquivo": "assets/RENAN 2.jpg",
       "proporcao": "2564/3840",
       "legenda": "Banda 3 em 1 — RENAN 2"
-    },
+    }
   ],
   "videos": [
     {
