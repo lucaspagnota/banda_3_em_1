@@ -5,7 +5,7 @@ As molduras aparecem no início, sobre e integrantes. A galeria mostra quatro fo
 
 ## Ativar a agenda automática no GitHub
 
-1. Envie `dist`, `.github` e `.gitignore` para a raiz do repositório `lucaspagnota/site_banda_3_em_1` (branch principal). Não envie backups ou node_modules.
+1. Envie `dist`, `.github` e `.gitignore` para a raiz do repositório `banda3em1/banda3em1.github.io` (site em https://banda3em1.github.io) (branch principal). Não envie backups ou node_modules.
 2. No repositório, abra Settings → Pages → Build and deployment → Source → GitHub Actions.
 3. Abra Actions → Atualizar agenda e publicar site → Run workflow.
 4. Após a execução concluir, abra o endereço indicado em Pages.
