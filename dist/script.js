@@ -4688,7 +4688,7 @@
         const timeout = setTimeout(() => request.abort(), 15000);
         try {
           const agendaUrl = window.location.protocol === 'file:'
-            ? 'https://lucaspagnota.github.io/banda_3_em_1/assets/agenda.json'
+            ? 'https://banda3em1.github.io/assets/agenda.json'
             : 'assets/agenda.json';
           const response = await fetch(agendaUrl, {cache:'no-store', signal:request.signal});
           if (!response.ok) throw Error('Agenda indisponível');
