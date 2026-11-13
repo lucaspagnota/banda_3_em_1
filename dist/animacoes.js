@@ -255,8 +255,8 @@
     el.id = "v3-cursor";
     el.setAttribute("aria-hidden", "true");
     document.body.appendChild(el);
-    // ponto de clique de cada cursor (no tamanho de 48px)
-    const ponta = { normal: [10.5, 7.5], link: [19.5, 10.5], text: [24, 24] };
+    // ponto de clique de cada cursor (no tamanho de 30px)
+    const ponta = { normal: [6.6, 4.7], link: [12.2, 6.6], text: [15, 15] };
     let tipo = "normal", x = -100, y = -100, pendente = false;
     const mover = () => {
       pendente = false;
