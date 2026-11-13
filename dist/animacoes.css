@@ -114,11 +114,11 @@ html.v3-loading body { overflow: hidden; }
   top: 0;
   left: 0;
   z-index: 10000;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   pointer-events: none;
   opacity: 0;
-  background: url("assets/cursor-normal.webp") 0 0 / 2880px 48px no-repeat;
+  background: url("assets/cursor-normal.webp") 0 0 / 1800px 30px no-repeat;
   animation: v3-cursor-anim 3s steps(60) infinite;
   transition: opacity .2s ease;
   will-change: transform;
@@ -127,7 +127,7 @@ html.v3-loading body { overflow: hidden; }
 #v3-cursor.is-text { background-image: url("assets/cursor-text.webp"); }
 .v3-cursor-on #v3-cursor { opacity: 1; }
 .v3-cursor-hidden #v3-cursor { opacity: 0; }
-@keyframes v3-cursor-anim { to { background-position: -2880px 0; } }
+@keyframes v3-cursor-anim { to { background-position: -1800px 0; } }
 
 /* ---------- Botões magnéticos ---------- */
 .v3-magnetic { translate: var(--mx, 0) var(--my, 0); transition: translate .5s var(--v3-ease), transform .3s, box-shadow .3s, background-position .6s, background-color .3s, border-color .3s, color .3s; }
