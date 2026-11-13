@@ -251,35 +251,36 @@
   /* ---------- Cursor, botões magnéticos e luz nos cartões ---------- */
   function cursor() {
     if (!mouse) return;
-    const dot = document.createElement("div");
-    const ring = document.createElement("div");
-    dot.id = "v3-dot";
-    ring.id = "v3-ring";
-    document.body.append(dot, ring);
-    let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y, ativo = false;
+    const el = document.createElement("div");
+    el.id = "v3-cursor";
+    el.setAttribute("aria-hidden", "true");
+    document.body.appendChild(el);
+    // ponto de clique de cada cursor (no tamanho de 48px)
+    const ponta = { normal: [10.5, 7.5], link: [19.5, 10.5], text: [24, 24] };
+    let tipo = "normal", x = -100, y = -100, pendente = false;
+    const mover = () => {
+      pendente = false;
+      const [hx, hy] = ponta[tipo];
+      el.style.transform = `translate3d(${x - hx}px,${y - hy}px,0)`;
+    };
     addEventListener("pointermove", (e) => {
       if (e.pointerType !== "mouse") return;
       x = e.clientX;
       y = e.clientY;
-      if (!ativo) { ativo = true; rx = x; ry = y; html.classList.add("v3-cursor-on"); }
+      html.classList.add("v3-cursor-on");
       const t = e.target;
-      const campo = t.closest && t.closest("input, textarea, select, iframe");
-      html.classList.toggle("v3-cursor-hidden", !!campo);
-      const rotulo = t.closest && t.closest("#lista-galeria button, [id^='video'] button, [id^='video'] a");
-      const link = t.closest && t.closest("a, button, [role='button'], summary, label");
-      ring.classList.toggle("has-label", !!rotulo);
-      ring.textContent = rotulo ? (rotulo.closest("#lista-galeria") ? "Ver" : "Play") : "";
-      ring.classList.toggle("is-hover", !!link && !rotulo);
+      html.classList.toggle("v3-cursor-hidden", !!(t.closest && t.closest("select, iframe")));
+      let novo = "normal";
+      if (t.closest && t.closest("input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]), textarea")) novo = "text";
+      else if (t.closest && t.closest("a, button, [role='button'], summary, label, input[type=checkbox], input[type=radio]")) novo = "link";
+      if (novo !== tipo) {
+        tipo = novo;
+        el.classList.toggle("is-link", tipo === "link");
+        el.classList.toggle("is-text", tipo === "text");
+      }
+      if (!pendente) { pendente = true; requestAnimationFrame(mover); }
     }, { passive: true });
     document.addEventListener("mouseleave", () => html.classList.remove("v3-cursor-on"));
-    const loop = () => {
-      rx += (x - rx) * 0.18;
-      ry += (y - ry) * 0.18;
-      dot.style.transform = `translate3d(${x}px,${y}px,0)`;
-      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
-      requestAnimationFrame(loop);
-    };
-    requestAnimationFrame(loop);
   }
 
   function magnetic() {
