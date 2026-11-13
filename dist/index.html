@@ -66,6 +66,22 @@
       rel="stylesheet"
     />
       <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="animacoes.css" />
+    <script>
+      document.documentElement.classList.add("v3-js","v3-loading");
+      // Dentro de um iframe, o rootMargin só vale com root explícito.
+      // Isso mantém o sublinhado do menu certo em qualquer lugar.
+      (function () {
+        var IO = window.IntersectionObserver;
+        if (!IO || window.top === window) return;
+        window.IntersectionObserver = function (cb, opts) {
+          opts = Object.assign({}, opts);
+          if (!opts.root && opts.rootMargin) { try { return new IO(cb, Object.assign({}, opts, { root: document })); } catch (e) {} }
+          return new IO(cb, opts);
+        };
+        window.IntersectionObserver.prototype = IO.prototype;
+      })();
+    </script>
   </head>
   <body>
     <noscript>
@@ -77,5 +93,6 @@
     <script defer src="conteudo.js"></script>
     <script defer src="assets/runtime.js"></script>
     <script defer src="script.js"></script>
+    <script defer src="animacoes.js"></script>
   </body>
 </html>

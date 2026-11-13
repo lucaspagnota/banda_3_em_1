@@ -1,0 +1,319 @@
+/* BANDA 3 EM 1 — Animações
+ * Camada de animações aplicada sobre o site (mesmo conteúdo, mesmos dados).
+ * Tudo aqui é desligado quando o visitante pede menos movimento no sistema. */
+
+/* Garante o fundo escuro da V1 mesmo quando a página é aberta dentro de outro
+ * ambiente (ex.: prévia) que injeta estilos de página clara. */
+:root { color-scheme: dark; }
+html, body { background-color: var(--bg, #05050f); }
+body {
+  color: var(--text, #fff);
+  font-family: Outfit, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+:root {
+  --v3-cyan: #3de3ff;
+  --v3-blue: #00a6ff;
+  --v3-purple: #a43dff;
+  --v3-ink: #05050f;
+  --v3-ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+/* ---------- Pré-carregamento ---------- */
+#v3-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: var(--v3-ink);
+  color: #fff;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s var(--v3-ease);
+}
+#v3-loader.is-done { clip-path: inset(0 0 100% 0); pointer-events: none; }
+#v3-loader .v3-loader-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  transition: opacity .5s ease, transform .8s var(--v3-ease);
+}
+#v3-loader.is-done .v3-loader-in { opacity: 0; transform: translateY(-40px); }
+#v3-loader img {
+  width: 92px;
+  height: auto;
+  filter: drop-shadow(0 0 18px rgba(0, 166, 255, .6)) drop-shadow(0 0 40px rgba(164, 61, 255, .45));
+  animation: v3-pulse 1.4s ease-in-out infinite;
+}
+#v3-loader .v3-loader-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+  letter-spacing: .08em;
+  line-height: 1;
+  overflow: hidden;
+}
+#v3-loader .v3-loader-name span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: v3-rise .8s var(--v3-ease) forwards;
+}
+#v3-loader .v3-loader-bar {
+  width: min(260px, 60vw);
+  height: 2px;
+  background: rgba(255, 255, 255, .1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+#v3-loader .v3-loader-bar i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--v3-cyan), var(--v3-blue), var(--v3-purple));
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+  transition: transform .2s linear;
+}
+#v3-loader .v3-loader-count {
+  font: 600 .72rem/1 "Outfit", sans-serif;
+  letter-spacing: .35em;
+  color: rgba(255, 255, 255, .55);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Animações de entrada da V1 esperam o fim do pré-carregamento */
+html.v3-loading .hero-in,
+html.v3-loading .neon-flicker { animation-play-state: paused; }
+html.v3-loading body { overflow: hidden; }
+
+@keyframes v3-pulse { 50% { transform: scale(1.06); } }
+@keyframes v3-rise { to { transform: none; } }
+
+/* ---------- Barra de progresso da rolagem ---------- */
+#v3-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 200;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--v3-cyan), var(--v3-blue) 40%, var(--v3-purple));
+  transform-origin: left;
+  transform: scaleX(var(--v3-scroll, 0));
+  box-shadow: 0 0 12px rgba(0, 166, 255, .7);
+}
+
+/* ---------- Cursor próprio (só mouse) ---------- */
+.v3-cursor-on, .v3-cursor-on a, .v3-cursor-on button { cursor: none; }
+.v3-cursor-on input, .v3-cursor-on textarea, .v3-cursor-on select { cursor: auto; }
+#v3-dot, #v3-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.v3-cursor-on #v3-dot, .v3-cursor-on #v3-ring { opacity: 1; }
+#v3-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #fff;
+  box-shadow: 0 0 10px var(--v3-cyan);
+}
+#v3-ring {
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1px solid rgba(61, 227, 255, .6);
+  display: grid;
+  place-items: center;
+  font: 700 .55rem/1 "Outfit", sans-serif;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: transparent;
+  transition: opacity .3s ease, width .35s var(--v3-ease), height .35s var(--v3-ease), margin .35s var(--v3-ease),
+    background-color .35s ease, border-color .35s ease, color .2s ease;
+}
+#v3-ring.is-hover {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgba(0, 166, 255, .12);
+  border-color: rgba(164, 61, 255, .8);
+}
+#v3-ring.has-label {
+  width: 78px;
+  height: 78px;
+  margin: -39px 0 0 -39px;
+  background: linear-gradient(135deg, rgba(0, 166, 255, .85), rgba(164, 61, 255, .85));
+  border-color: transparent;
+  color: #fff;
+}
+.v3-cursor-hidden #v3-dot, .v3-cursor-hidden #v3-ring { opacity: 0; }
+
+/* ---------- Botões magnéticos ---------- */
+.v3-magnetic { translate: var(--mx, 0) var(--my, 0); transition: translate .5s var(--v3-ease), transform .3s, box-shadow .3s, background-position .6s, background-color .3s, border-color .3s, color .3s; }
+
+/* ---------- Cartões com luz que segue o mouse ---------- */
+.card-neon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s ease;
+  background: radial-gradient(420px circle at var(--sx, 50%) var(--sy, 50%), rgba(61, 227, 255, .12), rgba(164, 61, 255, .07) 40%, transparent 70%);
+}
+.card-neon.v3-lit::after { opacity: 1; }
+
+/* ---------- Títulos que sobem palavra por palavra ---------- */
+.v3-word {
+  display: inline-block;
+  /* corta só embaixo (de onde a palavra sobe), sem cortar acentos em cima */
+  clip-path: inset(-40% -8% -0.08em -8%);
+}
+.v3-word > span {
+  display: inline-block;
+  transform: translateY(105%) rotate(4deg);
+  transform-origin: left bottom;
+  transition: transform 1s var(--v3-ease);
+  transition-delay: calc(var(--i, 0) * 70ms + 80ms);
+}
+.v3-split-hl {
+  clip-path: inset(-25% 100% -25% 0);
+  transition: clip-path 1.1s var(--v3-ease);
+  transition-delay: calc(var(--i, 0) * 70ms + 160ms);
+}
+.is-visible .v3-word > span, .v3-in .v3-word > span { transform: none; }
+.is-visible .v3-split-hl, .v3-in .v3-split-hl { clip-path: inset(-25% -10% -25% 0); }
+
+/* ---------- Título do topo: letras caindo no lugar ---------- */
+.v3-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60%) rotateX(-80deg);
+  transform-origin: 50% 100%;
+  filter: blur(8px);
+}
+html.v3-ready .v3-char {
+  animation: v3-char .9s var(--v3-ease) forwards;
+  animation-delay: calc(var(--i) * 55ms + 150ms);
+}
+@keyframes v3-char { to { opacity: 1; transform: none; filter: none; } }
+
+/* ---------- Texto que acende letra por letra com a rolagem ---------- */
+.v3-scrub .v3-l {
+  color: rgba(255, 255, 255, .14);
+  transition: color .25s ease, text-shadow .25s ease;
+}
+.v3-scrub .v3-l.on { color: #fff; }
+.v3-scrub .v3-l.on.v3-hot { color: var(--v3-cyan); text-shadow: 0 0 18px rgba(61, 227, 255, .6); }
+
+/* ---------- Linha do tempo que se preenche ---------- */
+#experiencia .timeline-runner { display: none; }
+.v3-tl-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(var(--v3-tl, 0));
+  background: linear-gradient(90deg, var(--v3-cyan), var(--v3-blue), var(--v3-purple));
+  box-shadow: 0 0 14px rgba(0, 166, 255, .9), 0 0 28px rgba(164, 61, 255, .6);
+  height: 3px;
+  top: -1px;
+}
+.v3-tl-fill.is-v { transform-origin: top; transform: scaleY(var(--v3-tl, 0)); width: 3px; height: auto; left: -1px; top: 0; }
+#experiencia li .timeline-node { transition: transform .5s var(--v3-ease), filter .5s ease; }
+#experiencia li:not(.v3-on) .timeline-node { filter: grayscale(1) brightness(.55); transform: scale(.8); }
+#experiencia li.v3-on .timeline-node { transform: scale(1.15); }
+#experiencia li .texto-neon { transition: opacity .5s ease; }
+#experiencia li:not(.v3-on) .texto-neon { opacity: .35; }
+
+/* ---------- Faixa de estilos reage à velocidade da rolagem ---------- */
+.marquee .marquee-track { transform: skewX(var(--v3-skew, 0deg)); transition: transform .2s ease-out; }
+
+/* ---------- Fotos entram com cortina ---------- */
+.v3-curtain { clip-path: inset(100% 0 0 0 round 1rem); transition: clip-path 1.2s var(--v3-ease); transition-delay: var(--reveal-delay, 0s); }
+.is-visible .v3-curtain, .v3-curtain.v3-in { clip-path: inset(0 0 0 0 round 1rem); }
+.v3-curtain img { scale: 1.25; transition: scale 1.6s var(--v3-ease); transition-delay: var(--reveal-delay, 0s); }
+.is-visible .v3-curtain img, .v3-curtain.v3-in img { scale: 1; }
+
+/* ---------- Inclinação 3D e parallax ---------- */
+.v3-tilt {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .6s var(--v3-ease);
+  will-change: transform;
+}
+.v3-par { translate: 0 var(--py, 0px); will-change: translate; }
+
+/* ---------- WhatsApp no canto esquerdo ---------- */
+a[aria-label^="Conversar com a"][class*="fixed"] {
+  left: max(1.1rem, env(safe-area-inset-left, 0px)) !important;
+  right: auto !important;
+  flex-direction: row-reverse;
+}
+a[aria-label^="Conversar com a"][class*="fixed"] > span:first-child {
+  margin-right: 0;
+  margin-left: .75rem;
+  translate: -.5rem 0;
+}
+a[aria-label^="Conversar com a"][class*="fixed"]:hover > span:first-child { translate: 0 0; }
+
+/* ---------- Botão "Voltar ao topo" no canto direito ---------- */
+#v3-top {
+  position: fixed;
+  right: max(1.1rem, env(safe-area-inset-right, 0px));
+  bottom: max(1.1rem, env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  height: 2.75rem;
+  padding: 0 1rem 0 .3rem;
+  border-radius: 999px;
+  font: 700 .62rem/1 "Outfit", sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--v3-blue), var(--v3-purple));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18), 0 12px 28px -12px rgba(164, 61, 255, .85);
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 20px;
+  transition: opacity .5s ease, visibility .5s, translate .7s var(--v3-ease), box-shadow .3s ease;
+}
+#v3-top.is-on { opacity: 1; visibility: visible; translate: 0 0; }
+#v3-top:hover { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 14px 34px -10px rgba(0, 166, 255, .9); }
+#v3-top:focus-visible { outline: 2px solid var(--v3-cyan); outline-offset: 3px; }
+.v3-top-icon {
+  display: grid;
+  place-items: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #5a5cff;
+}
+.v3-top-icon svg { width: 16px; height: 16px; animation: v3-nudge 1.6s ease-in-out infinite; }
+@keyframes v3-nudge { 50% { transform: translateY(-3px); } }
+@media (max-width: 767px) {
+  #v3-top { width: 2.75rem; padding: 0; justify-content: center; }
+  #v3-top .v3-top-text { display: none; }
+}
+
+/* ---------- Menos movimento: volta ao comportamento da V1 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #v3-loader, #v3-dot, #v3-ring { display: none !important; }
+  .v3-word > span, .v3-char, .v3-split-hl, .v3-curtain, .v3-curtain img { transform: none !important; clip-path: none !important; opacity: 1 !important; filter: none !important; scale: 1 !important; animation: none !important; }
+  .v3-scrub .v3-l { color: inherit !important; }
+  .v3-tilt, .v3-par, .v3-magnetic { transform: none !important; translate: none !important; }
+}

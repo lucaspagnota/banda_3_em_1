@@ -1,6 +1,6 @@
 # Site da Banda 3 em 1
 
-O site continua em `dist`: index.html, conteudo.js, styles.css, script.js e assets.
+O site continua em `dist`: index.html, conteudo.js, styles.css, script.js, animacoes.css, animacoes.js e assets. As animações ficam só em `animacoes.css` e `animacoes.js`.
 As molduras aparecem no início, sobre e integrantes. A galeria mostra quatro fotos sem molduras, com as demais no botão Ver mais fotos.
 
 ## Ativar a agenda automática no GitHub
