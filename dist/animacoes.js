@@ -1,5 +1,5 @@
-/* BANDA 3 EM 1 — V3 (teste)
- * Animações extras por cima do site da V1. Não altera textos, dados nem a agenda:
+/* BANDA 3 EM 1 — Animações
+ * Animações extras por cima do site. Não altera textos, dados nem a agenda:
  * espera o React montar a página e só acrescenta efeitos visuais. */
 "use strict";
 (() => {
