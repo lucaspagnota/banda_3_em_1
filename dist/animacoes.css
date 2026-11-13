@@ -106,57 +106,28 @@ html.v3-loading body { overflow: hidden; }
   box-shadow: 0 0 12px rgba(0, 166, 255, .7);
 }
 
-/* ---------- Cursor próprio (só mouse) ---------- */
-.v3-cursor-on, .v3-cursor-on a, .v3-cursor-on button { cursor: none; }
-.v3-cursor-on input, .v3-cursor-on textarea, .v3-cursor-on select { cursor: auto; }
-#v3-dot, #v3-ring {
+/* ---------- Cursor neon animado (só mouse) ---------- */
+.v3-cursor-on, .v3-cursor-on * { cursor: none !important; }
+.v3-cursor-on select, .v3-cursor-on select * { cursor: auto !important; }
+#v3-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10000;
+  width: 48px;
+  height: 48px;
   pointer-events: none;
-  border-radius: 50%;
   opacity: 0;
-  transition: opacity .3s ease;
+  background: url("assets/cursor-normal.webp") 0 0 / 2880px 48px no-repeat;
+  animation: v3-cursor-anim 3s steps(60) infinite;
+  transition: opacity .2s ease;
+  will-change: transform;
 }
-.v3-cursor-on #v3-dot, .v3-cursor-on #v3-ring { opacity: 1; }
-#v3-dot {
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  background: #fff;
-  box-shadow: 0 0 10px var(--v3-cyan);
-}
-#v3-ring {
-  width: 38px;
-  height: 38px;
-  margin: -19px 0 0 -19px;
-  border: 1px solid rgba(61, 227, 255, .6);
-  display: grid;
-  place-items: center;
-  font: 700 .55rem/1 "Outfit", sans-serif;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: transparent;
-  transition: opacity .3s ease, width .35s var(--v3-ease), height .35s var(--v3-ease), margin .35s var(--v3-ease),
-    background-color .35s ease, border-color .35s ease, color .2s ease;
-}
-#v3-ring.is-hover {
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 0 -32px;
-  background: rgba(0, 166, 255, .12);
-  border-color: rgba(164, 61, 255, .8);
-}
-#v3-ring.has-label {
-  width: 78px;
-  height: 78px;
-  margin: -39px 0 0 -39px;
-  background: linear-gradient(135deg, rgba(0, 166, 255, .85), rgba(164, 61, 255, .85));
-  border-color: transparent;
-  color: #fff;
-}
-.v3-cursor-hidden #v3-dot, .v3-cursor-hidden #v3-ring { opacity: 0; }
+#v3-cursor.is-link { background-image: url("assets/cursor-link.webp"); }
+#v3-cursor.is-text { background-image: url("assets/cursor-text.webp"); }
+.v3-cursor-on #v3-cursor { opacity: 1; }
+.v3-cursor-hidden #v3-cursor { opacity: 0; }
+@keyframes v3-cursor-anim { to { background-position: -2880px 0; } }
 
 /* ---------- Botões magnéticos ---------- */
 .v3-magnetic { translate: var(--mx, 0) var(--my, 0); transition: translate .5s var(--v3-ease), transform .3s, box-shadow .3s, background-position .6s, background-color .3s, border-color .3s, color .3s; }
@@ -312,7 +283,7 @@ a[aria-label^="Conversar com a"][class*="fixed"]:hover > span:first-child { tran
 
 /* ---------- Menos movimento: volta ao comportamento da V1 ---------- */
 @media (prefers-reduced-motion: reduce) {
-  #v3-loader, #v3-dot, #v3-ring { display: none !important; }
+  #v3-loader, #v3-cursor { display: none !important; }
   .v3-word > span, .v3-char, .v3-split-hl, .v3-curtain, .v3-curtain img { transform: none !important; clip-path: none !important; opacity: 1 !important; filter: none !important; scale: 1 !important; animation: none !important; }
   .v3-scrub .v3-l { color: inherit !important; }
   .v3-tilt, .v3-par, .v3-magnetic { transform: none !important; translate: none !important; }
