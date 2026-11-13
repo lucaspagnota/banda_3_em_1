@@ -348,7 +348,7 @@
     updateTimeline(vh);
     updateParallax();
     updateMarquee(vel);
-    $("#v3-badge")?.classList.toggle("is-away", scrollY > 300);
+    $("#v3-top")?.classList.toggle("is-on", scrollY > vh * 0.9);
     if (Math.abs(vel) > 0.5) agendar(); // deixa a faixa desacelerar suavemente
   }
   function agendar() {
@@ -377,12 +377,14 @@
     prog.setAttribute("aria-hidden", "true");
     document.body.appendChild(prog);
 
-    const badge = document.createElement("a");
-    badge.id = "v3-badge";
-    badge.href = "https://banda3em1.github.io/";
-    badge.title = "Abrir o site oficial";
-    badge.innerHTML = "<b>V3</b> versão de teste";
-    document.body.appendChild(badge);
+    // Botão "Voltar ao topo", ao lado do WhatsApp
+    const topo = document.createElement("a");
+    topo.id = "v3-top";
+    topo.href = "#inicio";
+    topo.setAttribute("aria-label", "Voltar ao topo");
+    topo.innerHTML =
+      '<span class="v3-top-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span><span class="v3-top-text">Voltar ao topo</span>';
+    document.body.appendChild(topo);
 
     if (!calmo) {
       cursor();

@@ -2,6 +2,17 @@
  * Camada de animações aplicada sobre o site da V1 (mesmo conteúdo, mesmos dados).
  * Tudo aqui é desligado quando o visitante pede menos movimento no sistema. */
 
+/* Garante o fundo escuro da V1 mesmo quando a página é aberta dentro de outro
+ * ambiente (ex.: prévia) que injeta estilos de página clara. */
+:root { color-scheme: dark; }
+html, body { background-color: var(--bg, #05050f); }
+body {
+  color: var(--text, #fff);
+  font-family: Outfit, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 :root {
   --v3-cyan: #3de3ff;
   --v3-blue: #00a6ff;
@@ -166,10 +177,8 @@ html.v3-loading body { overflow: hidden; }
 /* ---------- Títulos que sobem palavra por palavra ---------- */
 .v3-word {
   display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  padding-bottom: .06em;
-  margin-bottom: -.06em;
+  /* corta só embaixo (de onde a palavra sobe), sem cortar acentos em cima */
+  clip-path: inset(-40% -8% -0.08em -8%);
 }
 .v3-word > span {
   display: inline-block;
@@ -179,13 +188,12 @@ html.v3-loading body { overflow: hidden; }
   transition-delay: calc(var(--i, 0) * 70ms + 80ms);
 }
 .v3-split-hl {
-  display: inline-block;
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(-25% 100% -25% 0);
   transition: clip-path 1.1s var(--v3-ease);
   transition-delay: calc(var(--i, 0) * 70ms + 160ms);
 }
 .is-visible .v3-word > span, .v3-in .v3-word > span { transform: none; }
-.is-visible .v3-split-hl, .v3-in .v3-split-hl { clip-path: inset(0 -10% 0 0); }
+.is-visible .v3-split-hl, .v3-in .v3-split-hl { clip-path: inset(-25% -10% -25% 0); }
 
 /* ---------- Título do topo: letras caindo no lugar ---------- */
 .v3-char {
@@ -245,36 +253,49 @@ html.v3-ready .v3-char {
 }
 .v3-par { translate: 0 var(--py, 0px); will-change: translate; }
 
-/* ---------- Selo de versão de teste ---------- */
-#v3-badge {
+/* ---------- Botão "Voltar ao topo" (ao lado do WhatsApp) ---------- */
+#v3-top {
   position: fixed;
-  left: 14px;
-  bottom: 14px;
+  right: calc(max(1.1rem, env(safe-area-inset-right, 0px)) + 4.25rem);
+  bottom: max(1.1rem, env(safe-area-inset-bottom, 0px));
   z-index: 60;
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  padding: .45rem .8rem;
+  gap: .7rem;
+  height: 3.5rem;
+  padding: 0 1.25rem 0 .4rem;
   border-radius: 999px;
-  font: 600 .62rem/1 "Outfit", sans-serif;
-  letter-spacing: .2em;
+  font: 700 .72rem/1 "Outfit", sans-serif;
+  letter-spacing: .16em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: #fff;
-  background: rgba(12, 12, 32, .75);
-  border: 1px solid rgba(255, 255, 255, .14);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
-  transition: opacity .4s ease, translate .4s ease;
-}
-@media (max-width: 1023px) {
-  #v3-badge.is-away { opacity: 0; translate: 0 12px; pointer-events: none; }
-}
-#v3-badge b {
-  padding: .2rem .45rem;
-  border-radius: 999px;
   background: linear-gradient(135deg, var(--v3-blue), var(--v3-purple));
-  letter-spacing: .1em;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18), 0 14px 34px -12px rgba(164, 61, 255, .85);
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 24px;
+  transition: opacity .5s ease, visibility .5s, translate .7s var(--v3-ease), box-shadow .3s ease;
+}
+#v3-top.is-on { opacity: 1; visibility: visible; translate: 0 0; }
+#v3-top:hover { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 16px 40px -10px rgba(0, 166, 255, .9); }
+#v3-top:focus-visible { outline: 2px solid var(--v3-cyan); outline-offset: 3px; }
+.v3-top-icon {
+  display: grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #5a5cff;
+}
+.v3-top-icon svg { animation: v3-nudge 1.6s ease-in-out infinite; }
+@keyframes v3-nudge { 50% { transform: translateY(-3px); } }
+@media (max-width: 767px) {
+  #v3-top { width: 3.5rem; padding: 0; justify-content: center; }
+  #v3-top .v3-top-text { display: none; }
+  .v3-top-icon { width: 2.9rem; height: 2.9rem; }
 }
 
 /* ---------- Menos movimento: volta ao comportamento da V1 ---------- */
